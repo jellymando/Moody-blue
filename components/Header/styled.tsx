@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Container } from '../Container/styled';
+import { fontSize, color } from '../../constants/style';
 
 export const Top = styled.div`
     border-bottom: 1px solid #d7d7d7;
@@ -27,7 +28,7 @@ export const SideMenu = styled.div`
     align-items: center;
 
     .icon {
-        &:not(:first-child) {
+        &:not(span) {
             margin-left: 15px;
         }
     }
@@ -42,12 +43,46 @@ export const SideMenu = styled.div`
     }
 `;
 
-export const Bottom = styled.div``;
+export const Bottom = styled.div`
+    border-bottom: 1px solid #d7d7d7;
+`;
+
+export const Underline = styled.span<{ left: number; width: number }>`
+    display: none;
+    position: absolute;
+    left: ${({ left }) => left}px;
+    bottom: 0;
+    width: ${({ width }) => width}px;
+    height: 3px;
+    background: ${color.black};
+    transition: 0.5s;
+`;
 
 export const NavContainer = styled(Container)`
+    position: relative;
+
     ul {
         display: flex;
         justify-content: space-between;
         padding: 0 5%;
+
+        &:hover {
+            ~ ${Underline} {
+                display: inline-block;
+            }
+        }
+
+        li {
+            a {
+                font-family: 'Scheherazade New', serif;
+                font-size: ${fontSize.xLarge};
+                color: ${color.black};
+                padding: 15px;
+            }
+        }
+    }
+
+    &:hover .underline {
+        display: inline-block;
     }
 `;

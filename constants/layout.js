@@ -13,4 +13,4 @@ export const image = {
     },
 };
 
-export const menus = ['Outer', 'Top', 'Blouse', 'Dress', 'Skirt', 'Pants', 'Accessory'];
+export const menus = ['Outer', 'Top', 'Knit', 'Blouse', 'Dress', 'Skirt', 'Pants', 'Bag', 'Shoes', 'Accessory'];

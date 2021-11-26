@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
 
 export const reset = css`
+    @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
+
     /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -94,6 +96,9 @@ export const reset = css`
         font: inherit;
         vertical-align: baseline;
     }
+    html {
+        font-size: 10px;
+    }
     /* HTML5 display-role reset for older browsers */
     article,
     aside,
@@ -129,5 +134,14 @@ export const reset = css`
     table {
         border-collapse: collapse;
         border-spacing: 0;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    a,
+    span,
+    i {
+        display: inline-block;
     }
 `;

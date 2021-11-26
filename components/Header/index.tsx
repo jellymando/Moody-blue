@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
+import { debounce } from 'lodash';
 import Image from '../Image';
 import { menus } from '../../constants/layout';
-import { Top, HeaderContainer, Logo, SideMenu, Bottom, NavContainer } from './styles';
+import { Top, HeaderContainer, Logo, SideMenu, Bottom, NavContainer, Underline } from './styled';
 
 const Header = () => {
+    const navRef = useRef<HTMLDivElement>(null);
+    const [menu, setMenu] = useState({ left: 0, width: 0 });
+
+    useEffect(() => {
+        if (!navRef.current) return;
+        const debounceMousemove = debounce((target) => {
+            setMenu({ left: target.offsetLeft, width: target.offsetWidth });
+        });
+
+        navRef.current.addEventListener('mousemove', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName !== 'A') return;
+            debounceMousemove(target);
+        });
+
+        return () => {
+            navRef.current.removeEventListener('mousemove', (e) => {
+                debounceMousemove(e);
+            });
+        };
+    }, []);
+
     return (
-        <div>
+        <>
             <Top>
                 <HeaderContainer>
                     <Logo>
@@ -29,7 +52,7 @@ const Header = () => {
                 </HeaderContainer>
             </Top>
             <Bottom>
-                <NavContainer>
+                <NavContainer ref={navRef}>
                     <ul>
                         {menus.map((menu) => {
                             return (
@@ -39,9 +62,10 @@ const Header = () => {
                             );
                         })}
                     </ul>
+                    <Underline left={menu.left} width={menu.width} />
                 </NavContainer>
             </Bottom>
-        </div>
+        </>
     );
 };
 
