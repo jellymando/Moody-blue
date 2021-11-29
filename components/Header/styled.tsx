@@ -13,33 +13,38 @@ export const HeaderContainer = styled(Container)`
     padding: 15px 0;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.h1`
     .logo {
         max-width: 150px;
     }
 `;
 
-export const SideMenu = styled.div`
+export const SideMenu = styled.ul`
     position: absolute;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
+`;
 
-    .icon {
-        &:not(span) {
-            margin-left: 15px;
-        }
+export const Menu = styled.li`
+    &:not(:last-of-type) {
+        margin-right: 10px;
     }
 
     .search_icon {
         max-width: 32px;
+        padding-right: 3px;
         cursor: pointer;
     }
 
     .cart_icon {
-        max-width: 34px;
+        max-width: 36px;
+    }
+
+    .login_icon {
+        max-width: 36px;
     }
 `;
 

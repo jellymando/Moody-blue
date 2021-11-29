@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { debounce } from 'lodash';
 import Image from '../Image';
 import { menus } from '../../constants/layout';
-import { Top, HeaderContainer, Logo, SideMenu, Bottom, NavContainer, Underline } from './styled';
+import { Top, HeaderContainer, Logo, SideMenu, Menu, Bottom, NavContainer, Underline } from './styled';
 
 const Header = () => {
     const navRef = useRef<HTMLDivElement>(null);
@@ -40,14 +40,19 @@ const Header = () => {
                         </Link>
                     </Logo>
                     <SideMenu>
-                        <span className="icon">
+                        <Menu>
                             <Image name="search" className="search_icon" />
-                        </span>
-                        <Link href="/cart">
-                            <a className="icon">
-                                <Image name="cart" className="cart_icon" />
-                            </a>
-                        </Link>
+                        </Menu>
+                        <Menu>
+                            <Link href="/cart">
+                                <a>
+                                    <Image name="cart" className="cart_icon" />
+                                </a>
+                            </Link>
+                        </Menu>
+                        <Menu>
+                            <Image name="login" className="login_icon" />
+                        </Menu>
                     </SideMenu>
                 </HeaderContainer>
             </Top>
