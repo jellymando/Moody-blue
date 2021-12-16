@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Container } from '../Container/styled';
+import { Container } from '../Layout/styled';
 import { fontSize, color } from '../../constants/style';
 
 export const Top = styled.div`

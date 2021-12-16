@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 export const reset = css`
     @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
@@ -144,4 +145,10 @@ export const reset = css`
     i {
         display: inline-block;
     }
+`;
+
+export const Container = styled.div`
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
 `;
