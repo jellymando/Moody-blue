@@ -1,36 +1,35 @@
 import React, { useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 import Layout from '../components/Layout';
+import Item from '../components/ItemList';
 import search from '../api/search';
+import db from '../db/firebase';
 
-const Index = ({ data }) => {
+const Index = ({ data, querySnapshot }) => {
     useEffect(() => {
-        console.log(data);
+        console.log('11st data', data);
+        console.log('aws data', querySnapshot);
+        // querySnapshot.forEach((doc) => {
+        //     console.log(`${doc.id} => ${doc.data()}`);
+        // });
     }, []);
+
     return (
         <Layout>
-            <div className="main">
-                <h1>상품목록</h1>
-                {data.length > 0 && (
-                    <ul>
-                        {data.map((el) => {
-                            return (
-                                <li key={el.ProductCode._text}>
-                                    <img src={el.ProductImage300._cdata} alt={el.ProductName._cdata} />
-                                </li>
-                            );
-                        })}
-                    </ul>
-                )}
-            </div>
+            <h1>상품목록</h1>
+            {data.length > 0 && <Item items={data} />}
         </Layout>
     );
 };
 
 export async function getStaticProps() {
     const data = await search();
+    const querySnapshot = await JSON.stringify(getDocs(collection(db, 'user')));
+
     return {
         props: {
             data,
+            querySnapshot,
         },
     };
 }
