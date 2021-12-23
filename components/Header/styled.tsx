@@ -48,8 +48,14 @@ export const Menu = styled.li`
     }
 `;
 
+export const LoginButton = styled.button`
+    background: none;
+    cursor: pointer;
+`;
+
 export const Bottom = styled.div`
     border-bottom: 1px solid #d7d7d7;
+    line-height: inherit;
 `;
 
 export const Underline = styled.span<{ left: number; width: number }>`

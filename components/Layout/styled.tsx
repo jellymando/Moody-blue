@@ -61,6 +61,8 @@ export const reset = css`
     li,
     fieldset,
     form,
+    input,
+    button,
     label,
     legend,
     table,
@@ -94,9 +96,6 @@ export const reset = css`
         margin: 0;
         padding: 0;
         border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
     }
     html {
         font-size: 10px;
