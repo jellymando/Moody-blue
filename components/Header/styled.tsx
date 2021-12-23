@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Container } from '../Layout/styled';
-import { fontSize, color } from '../../constants/style';
+import { FONTSIZE, COLOR } from 'constants/style';
 
 export const Top = styled.div`
     border-bottom: 1px solid #d7d7d7;
@@ -59,7 +59,7 @@ export const Underline = styled.span<{ left: number; width: number }>`
     bottom: 0;
     width: ${({ width }) => width}px;
     height: 3px;
-    background: ${color.black};
+    background: ${COLOR.BLACK};
     transition: 0.5s;
 `;
 
@@ -80,8 +80,8 @@ export const NavContainer = styled(Container)`
         li {
             a {
                 font-family: 'Scheherazade New', serif;
-                font-size: ${fontSize.xLarge};
-                color: ${color.black};
+                font-size: ${FONTSIZE.XLARGE};
+                color: ${COLOR.BLACK};
                 padding: 15px;
             }
         }

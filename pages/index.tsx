@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import Item from '../components/ItemList';
 import search from '../api/search';
 import db from '../db/firebase';
+import { Title } from 'components/Layout/styled';
 
 const Index = ({ data, querySnapshot }) => {
     useEffect(() => {
@@ -16,7 +17,7 @@ const Index = ({ data, querySnapshot }) => {
 
     return (
         <Layout>
-            <h1>상품목록</h1>
+            <Title>상품목록</Title>
             {data.length > 0 && <Item items={data} />}
         </Layout>
     );

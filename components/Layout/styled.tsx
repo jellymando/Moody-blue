@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { FONTSIZE } from 'constants/style';
 
 export const reset = css`
     @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
@@ -151,4 +152,10 @@ export const Container = styled.div`
     position: relative;
     max-width: 1300px;
     margin: 0 auto;
+`;
+
+export const Title = styled.h1`
+    font-size: ${FONTSIZE.XLARGE};
+    font-weight: 500;
+    margin-bottom: 20px;
 `;
