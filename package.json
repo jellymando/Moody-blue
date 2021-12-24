@@ -6,7 +6,7 @@
   "author": "jellymando <cicikdi@naver.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "start http://localhost:3000 && next dev",
+    "dev": "start http://localhost:8887 && next dev -p 8887",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
