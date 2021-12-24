@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { FONTSIZE } from 'constants/style';
 
 export const reset = css`
-    @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
 
     /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126

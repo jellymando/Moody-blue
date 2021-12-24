@@ -8,4 +8,5 @@ export const FONTSIZE = {
 
 export const COLOR = {
     BLACK: '#333',
+    MOODYBLUE: '#848ccf',
 };

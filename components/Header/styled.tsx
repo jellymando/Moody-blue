@@ -10,12 +10,12 @@ export const HeaderContainer = styled(Container)`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 0;
+    padding: 25px 0;
 `;
 
 export const Logo = styled.h1`
     .logo {
-        max-width: 150px;
+        max-width: 210px;
     }
 `;
 
@@ -64,8 +64,8 @@ export const Underline = styled.span<{ left: number; width: number }>`
     left: ${({ left }) => left}px;
     bottom: 0;
     width: ${({ width }) => width}px;
-    height: 3px;
-    background: ${COLOR.BLACK};
+    height: 4px;
+    background: ${COLOR.MOODYBLUE};
     transition: 0.5s;
 `;
 
@@ -85,8 +85,8 @@ export const NavContainer = styled(Container)`
 
         li {
             a {
-                font-family: 'Scheherazade New', serif;
-                font-size: ${FONTSIZE.XLARGE};
+                font-family: 'Nunito', sans-serif;
+                font-size: ${FONTSIZE.LARGE};
                 color: ${COLOR.BLACK};
                 padding: 15px;
             }
