@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>Moody Blue</title>
+                <title>Mellow Blue</title>
                 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
                 <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
             </Head>
