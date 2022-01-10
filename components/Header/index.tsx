@@ -13,7 +13,7 @@ const Header = () => {
     useEffect(() => {
         if (!navRef.current) return;
         const debounceMousemove = debounce((target) => {
-            setMenu({ left: target.offsetLeft, width: target.offsetWidth });
+            setMenu({ left: target.offsetLeft + target.offsetWidth / 4, width: target.offsetWidth / 2 });
         });
 
         navRef.current.addEventListener('mousemove', (e) => {

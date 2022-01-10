@@ -62,9 +62,10 @@ export const Underline = styled.span<{ left: number; width: number }>`
     display: none;
     position: absolute;
     left: ${({ left }) => left}px;
-    bottom: 0;
+    bottom: -1px;
     width: ${({ width }) => width}px;
     height: 4px;
+    border-radius: 2px;
     background: ${COLOR.MOODYBLUE};
     transition: 0.5s;
 `;
@@ -86,7 +87,7 @@ export const NavContainer = styled(Container)`
         li {
             a {
                 font-family: 'Nunito', sans-serif;
-                font-size: ${FONTSIZE.LARGE};
+                font-size: ${FONTSIZE.MIDEUM};
                 color: ${COLOR.BLACK};
                 padding: 15px;
             }
