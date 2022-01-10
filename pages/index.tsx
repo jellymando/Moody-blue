@@ -5,6 +5,7 @@ import Item from '../components/ItemList';
 import search from '../api/search';
 import db from '../db/firebase';
 import { Title } from 'components/Layout/styled';
+import SliderContainer from 'components/SliderContainer';
 
 const Index = ({ data, querySnapshot }) => {
     useEffect(() => {
@@ -17,6 +18,7 @@ const Index = ({ data, querySnapshot }) => {
 
     return (
         <Layout>
+            <SliderContainer />
             <Title>상품목록</Title>
             {data.length > 0 && <Item items={data} />}
         </Layout>
