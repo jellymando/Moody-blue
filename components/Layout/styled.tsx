@@ -4,6 +4,7 @@ import { FONTSIZE } from 'constants/style';
 
 export const reset = css`
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
     /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -115,6 +116,7 @@ export const reset = css`
         display: block;
     }
     body {
+        font-family: 'Noto Sans KR', sans-serif;
         line-height: 1;
     }
     ol,
@@ -155,6 +157,6 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
     font-size: ${FONTSIZE.XLARGE};
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 20px;
 `;
