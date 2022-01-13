@@ -1,18 +1,18 @@
 export const image = {
     logo: {
-        url: '/images/logo.png',
+        url: '/images/common/logo.png',
         alt: '로고이미지',
     },
     search: {
-        url: '/images/search.png',
+        url: '/images/common/search.png',
         alt: '검색아이콘',
     },
     cart: {
-        url: '/images/cart.png',
+        url: '/images/common/cart.png',
         alt: '카트아이콘',
     },
     login: {
-        url: '/images/login.png',
+        url: '/images/common/login.png',
         alt: '로그인아이콘',
     },
 };
