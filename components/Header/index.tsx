@@ -2,13 +2,27 @@ import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { debounce } from 'lodash';
 import GoogleLogin from 'react-google-login';
-import Image from '../Image';
-import { menus } from '../../constants/layout';
-import { Top, HeaderContainer, Logo, SideMenu, Menu, LoginButton, Bottom, NavContainer, Underline } from './styled';
+import {
+    Top,
+    HeaderContainer,
+    Logo,
+    SideMenu,
+    Menu,
+    Image,
+    LoginButton,
+    Bottom,
+    NavContainer,
+    Underline,
+} from './styled';
+
+const menus = ['Outer', 'Top', 'Knit', 'Blouse', 'Dress', 'Skirt', 'Pants', 'Bag', 'Shoes', 'Accessory'];
 
 const Header = () => {
     const navRef = useRef<HTMLDivElement>(null);
     const [menu, setMenu] = useState({ left: 0, width: 0 });
+    const responseGoogle = (response) => {
+        console.log(response);
+    };
 
     useEffect(() => {
         if (!navRef.current) return;
@@ -36,18 +50,18 @@ const Header = () => {
                     <Logo>
                         <Link href="/">
                             <a>
-                                <Image name="logo" className="logo" />
+                                <Image src="/images/common/logo.png" className="logo" />
                             </a>
                         </Link>
                     </Logo>
                     <SideMenu>
                         <Menu>
-                            <Image name="search" className="search_icon" />
+                            <Image src="/images/common/search.png" className="search_icon" />
                         </Menu>
                         <Menu>
                             <Link href="/cart">
                                 <a>
-                                    <Image name="cart" className="cart_icon" />
+                                    <Image src="/images/common/cart.png" className="cart_icon" />
                                 </a>
                             </Link>
                         </Menu>
@@ -56,9 +70,11 @@ const Header = () => {
                                 clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
                                 render={(renderProps) => (
                                     <LoginButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                                        <Image name="login" className="login_icon" />
+                                        <Image src="/images/common/login.png" className="login_icon" />
                                     </LoginButton>
                                 )}
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                             />
                         </Menu>

@@ -48,6 +48,8 @@ export const Menu = styled.li`
     }
 `;
 
+export const Image = styled.img``;
+
 export const LoginButton = styled.button`
     background: none;
     cursor: pointer;
