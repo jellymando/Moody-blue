@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Container } from '../Layout/styled';
 import { FONTSIZE, COLOR } from 'constants/style';
 
-export const Top = styled.div`
+export const HeaderTop = styled.div`
     border-bottom: 1px solid #d7d7d7;
 `;
 
@@ -19,7 +19,7 @@ export const Logo = styled.h1`
     }
 `;
 
-export const SideMenu = styled.ul`
+export const SideMenus = styled.ul`
     position: absolute;
     top: 50%;
     right: 0;
@@ -28,7 +28,7 @@ export const SideMenu = styled.ul`
     align-items: center;
 `;
 
-export const Menu = styled.li`
+export const Icon = styled.li`
     &:not(:last-of-type) {
         margin-right: 10px;
     }
@@ -55,7 +55,7 @@ export const LoginButton = styled.button`
     cursor: pointer;
 `;
 
-export const Bottom = styled.div`
+export const Nav = styled.div`
     border-bottom: 1px solid #d7d7d7;
     line-height: inherit;
 `;
@@ -75,28 +75,28 @@ export const Underline = styled.span<{ left: number; width: number }>`
 export const NavContainer = styled(Container)`
     position: relative;
 
-    ul {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 5%;
-
-        &:hover {
-            ~ ${Underline} {
-                display: inline-block;
-            }
-        }
-
-        li {
-            a {
-                font-family: 'Nunito', sans-serif;
-                font-size: ${FONTSIZE.MIDEUM};
-                color: ${COLOR.BLACK};
-                padding: 15px;
-            }
-        }
-    }
-
     &:hover .underline {
         display: inline-block;
+    }
+`;
+
+export const NavMenus = styled.ul`
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+
+    &:hover {
+        ~ ${Underline} {
+            display: inline-block;
+        }
+    }
+`;
+
+export const Menu = styled.li`
+    a {
+        font-family: 'Nunito', sans-serif;
+        font-size: ${FONTSIZE.MIDEUM};
+        color: ${COLOR.BLACK};
+        padding: 15px;
     }
 `;

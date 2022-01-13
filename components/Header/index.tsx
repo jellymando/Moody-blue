@@ -3,15 +3,17 @@ import Link from 'next/link';
 import { debounce } from 'lodash';
 import GoogleLogin from 'react-google-login';
 import {
-    Top,
+    HeaderTop,
     HeaderContainer,
     Logo,
-    SideMenu,
-    Menu,
+    SideMenus,
+    Icon,
     Image,
     LoginButton,
-    Bottom,
+    Nav,
     NavContainer,
+    NavMenus,
+    Menu,
     Underline,
 } from './styled';
 
@@ -45,27 +47,23 @@ const Header = () => {
 
     return (
         <>
-            <Top>
+            <HeaderTop>
                 <HeaderContainer>
                     <Logo>
                         <Link href="/">
-                            <a>
-                                <Image src="/images/common/logo.png" className="logo" />
-                            </a>
+                            <Image src="/images/common/logo.png" className="logo" />
                         </Link>
                     </Logo>
-                    <SideMenu>
-                        <Menu>
+                    <SideMenus>
+                        <Icon>
                             <Image src="/images/common/search.png" className="search_icon" />
-                        </Menu>
-                        <Menu>
+                        </Icon>
+                        <Icon>
                             <Link href="/cart">
-                                <a>
-                                    <Image src="/images/common/cart.png" className="cart_icon" />
-                                </a>
+                                <Image src="/images/common/cart.png" className="cart_icon" />
                             </Link>
-                        </Menu>
-                        <Menu>
+                        </Icon>
+                        <Icon>
                             <GoogleLogin
                                 clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
                                 render={(renderProps) => (
@@ -77,24 +75,24 @@ const Header = () => {
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                             />
-                        </Menu>
-                    </SideMenu>
+                        </Icon>
+                    </SideMenus>
                 </HeaderContainer>
-            </Top>
-            <Bottom>
+            </HeaderTop>
+            <Nav>
                 <NavContainer ref={navRef}>
-                    <ul>
+                    <NavMenus>
                         {menus.map((menu) => {
                             return (
-                                <li key={menu}>
+                                <Menu key={menu}>
                                     <Link href={`/${menu.toLowerCase()}`}>{menu}</Link>
-                                </li>
+                                </Menu>
                             );
                         })}
-                    </ul>
+                    </NavMenus>
                     <Underline left={menu.left} width={menu.width} />
                 </NavContainer>
-            </Bottom>
+            </Nav>
         </>
     );
 };
