@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { FONTSIZE } from 'constants/style';
 
-export const reset = css`
+const Reset = css`
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
@@ -149,14 +147,4 @@ export const reset = css`
     }
 `;
 
-export const Container = styled.div`
-    position: relative;
-    max-width: 1300px;
-    margin: 0 auto;
-`;
-
-export const Title = styled.h1`
-    font-size: ${FONTSIZE.XLARGE};
-    font-weight: 700;
-    margin-bottom: 20px;
-`;
+export default Reset;

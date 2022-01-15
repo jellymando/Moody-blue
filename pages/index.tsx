@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react';
+
+// Style
+import { Global } from '@emotion/react';
+import Reset from 'styles/reset';
+import { Wrapper, Title } from 'styles/contents';
+
+// DB
 import { collection, getDocs } from 'firebase/firestore';
-import Layout from '../components/Layout';
-import Item from '../components/ItemList';
-import search from '../api/search';
-import db from '../db/firebase';
-import { Title } from 'components/Layout/styled';
+import db from 'db/firebase';
+
+// API
+import search from 'api/search';
+
+// Components
+import Header from 'components/Header';
+import Item from 'components/ItemList';
 import SliderContainer from 'components/SliderContainer';
 
 const Index = ({ data, querySnapshot }) => {
@@ -17,11 +27,15 @@ const Index = ({ data, querySnapshot }) => {
     }, []);
 
     return (
-        <Layout>
+        <>
+            <Global styles={Reset} />
+            <Header />
             <SliderContainer />
-            <Title>상품목록</Title>
-            {data.length > 0 && <Item items={data} />}
-        </Layout>
+            <Wrapper>
+                <Title>상품목록</Title>
+                {data.length > 0 && <Item items={data} />}
+            </Wrapper>
+        </>
     );
 };
 
