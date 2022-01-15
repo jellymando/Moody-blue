@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import { Container } from '../Layout/styled';
+import { Wrapper } from 'styles/contents';
 import { FONTSIZE, COLOR } from 'constants/style';
 
 export const HeaderTop = styled.div`
     border-bottom: 1px solid #d7d7d7;
 `;
 
-export const HeaderContainer = styled(Container)`
+export const HeaderWrapper = styled(Wrapper)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +72,7 @@ export const Underline = styled.span<{ left: number; width: number }>`
     transition: 0.5s;
 `;
 
-export const NavContainer = styled(Container)`
+export const NavWrapper = styled(Wrapper)`
     position: relative;
 
     &:hover .underline {

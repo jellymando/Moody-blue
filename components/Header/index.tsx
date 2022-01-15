@@ -4,14 +4,14 @@ import { debounce } from 'lodash';
 import GoogleLogin from 'react-google-login';
 import {
     HeaderTop,
-    HeaderContainer,
+    HeaderWrapper,
     Logo,
     SideMenus,
     Icon,
     Image,
     LoginButton,
     Nav,
-    NavContainer,
+    NavWrapper,
     NavMenus,
     Menu,
     Underline,
@@ -48,7 +48,7 @@ const Header = () => {
     return (
         <>
             <HeaderTop>
-                <HeaderContainer>
+                <HeaderWrapper>
                     <Logo>
                         <Link href="/">
                             <Image src="/images/common/logo.png" className="logo" />
@@ -77,10 +77,10 @@ const Header = () => {
                             />
                         </Icon>
                     </SideMenus>
-                </HeaderContainer>
+                </HeaderWrapper>
             </HeaderTop>
             <Nav>
-                <NavContainer ref={navRef}>
+                <NavWrapper ref={navRef}>
                     <NavMenus>
                         {menus.map((menu) => {
                             return (
@@ -91,7 +91,7 @@ const Header = () => {
                         })}
                     </NavMenus>
                     <Underline left={menu.left} width={menu.width} />
-                </NavContainer>
+                </NavWrapper>
             </Nav>
         </>
     );
