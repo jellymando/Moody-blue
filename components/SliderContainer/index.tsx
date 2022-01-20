@@ -1,9 +1,10 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { Slide, Image } from './styled';
+import { Container, Slide, Image } from './styled';
 
 export default function SliderContainer() {
     const settings = {
+        dots: true,
         infinite: true,
         autoplay: true,
         speed: 500,
@@ -11,19 +12,21 @@ export default function SliderContainer() {
         pauseOnHover: false,
     };
     return (
-        <Slider {...settings}>
-            <Slide>
-                <Image src="/images/promotion/promotion_01.jpg" />
-            </Slide>
-            <Slide>
-                <Image src="/images/promotion/promotion_02.jpg" />
-            </Slide>
-            <Slide>
-                <Image src="/images/promotion/promotion_03.jpg" />
-            </Slide>
-            <Slide>
-                <Image src="/images/promotion/promotion_04.jpg" />
-            </Slide>
-        </Slider>
+        <Container>
+            <Slider {...settings}>
+                <Slide>
+                    <Image src="/images/promotion/promotion_01.jpg" />
+                </Slide>
+                <Slide>
+                    <Image src="/images/promotion/promotion_02.jpg" />
+                </Slide>
+                <Slide>
+                    <Image src="/images/promotion/promotion_03.jpg" />
+                </Slide>
+                <Slide>
+                    <Image src="/images/promotion/promotion_04.jpg" />
+                </Slide>
+            </Slider>
+        </Container>
     );
 }
