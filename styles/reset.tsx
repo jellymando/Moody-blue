@@ -96,8 +96,16 @@ const Reset = css`
         padding: 0;
         border: 0;
     }
+    html,
+    body {
+        width: 100%;
+    }
     html {
         font-size: 10px;
+    }
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        line-height: 1;
     }
     /* HTML5 display-role reset for older browsers */
     article,
@@ -112,10 +120,6 @@ const Reset = css`
     nav,
     section {
         display: block;
-    }
-    body {
-        font-family: 'Noto Sans KR', sans-serif;
-        line-height: 1;
     }
     ol,
     ul {
