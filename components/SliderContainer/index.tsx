@@ -5,6 +5,7 @@ import { Container, Slide, Image } from './styled';
 export default function SliderContainer() {
     const settings = {
         dots: true,
+        arrows: false,
         infinite: true,
         autoplay: true,
         speed: 500,
