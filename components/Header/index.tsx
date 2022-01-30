@@ -32,16 +32,17 @@ const Header = () => {
             setMenu({ left: target.offsetLeft + target.offsetWidth / 4, width: target.offsetWidth / 2 });
         });
 
-        navRef.current.addEventListener('mousemove', (e) => {
+        const handleMousemove = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             if (target.tagName !== 'A') return;
             debounceMousemove(target);
-        });
+        };
+
+        navRef.current.addEventListener('mousemove', handleMousemove);
 
         return () => {
-            navRef.current.removeEventListener('mousemove', (e) => {
-                debounceMousemove(e);
-            });
+            if (!navRef.current) return;
+            navRef.current.removeEventListener('mousemove', handleMousemove);
         };
     }, []);
 
@@ -51,7 +52,9 @@ const Header = () => {
                 <HeaderWrapper>
                     <Logo>
                         <Link href="/">
-                            <Image src="/images/common/logo.png" className="logo" />
+                            <a>
+                                <Image src="/images/common/logo.png" className="logo" />
+                            </a>
                         </Link>
                     </Logo>
                     <SideMenus>
@@ -60,11 +63,18 @@ const Header = () => {
                         </Icon>
                         <Icon>
                             <Link href="/cart">
-                                <Image src="/images/common/cart.png" className="cart_icon" />
+                                <a>
+                                    <Image src="/images/common/cart.png" className="cart_icon" />
+                                </a>
                             </Link>
                         </Icon>
                         <Icon>
-                            <GoogleLogin
+                            <Link href="/login">
+                                <a>
+                                    <Image src="/images/common/login.png" className="login_icon" />
+                                </a>
+                            </Link>
+                            {/* <GoogleLogin
                                 clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
                                 render={(renderProps) => (
                                     <LoginButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
@@ -74,7 +84,7 @@ const Header = () => {
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
-                            />
+                            /> */}
                         </Icon>
                     </SideMenus>
                 </HeaderWrapper>
