@@ -2,11 +2,13 @@ import styled from '@emotion/styled';
 import { Wrapper } from 'styles/contents';
 import { FONTSIZE, COLOR } from 'constants/style';
 
-export const HeaderTop = styled.div`
+export const HeaderWrap = styled.div``;
+
+export const TopMenu = styled.div`
     border-bottom: 1px solid #d7d7d7;
 `;
 
-export const HeaderWrapper = styled(Wrapper)`
+export const TopMenuWrapper = styled(Wrapper)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +70,7 @@ export const Underline = styled.span<{ left: number; width: number }>`
     width: ${({ width }) => width}px;
     height: 4px;
     border-radius: 2px;
-    background: ${COLOR.MOODYBLUE};
+    background: ${COLOR.MELLOWBLUE};
     transition: 0.5s;
 `;
 

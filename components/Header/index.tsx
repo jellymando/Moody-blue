@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { debounce } from 'lodash';
 import GoogleLogin from 'react-google-login';
 import {
-    HeaderTop,
-    HeaderWrapper,
+    HeaderWrap,
+    TopMenu,
+    TopMenuWrapper,
     Logo,
     SideMenus,
     Icon,
@@ -47,9 +48,9 @@ const Header = () => {
     }, []);
 
     return (
-        <>
-            <HeaderTop>
-                <HeaderWrapper>
+        <HeaderWrap>
+            <TopMenu>
+                <TopMenuWrapper>
                     <Logo>
                         <Link href="/">
                             <a>
@@ -87,8 +88,8 @@ const Header = () => {
                             /> */}
                         </Icon>
                     </SideMenus>
-                </HeaderWrapper>
-            </HeaderTop>
+                </TopMenuWrapper>
+            </TopMenu>
             <Nav>
                 <NavWrapper ref={navRef}>
                     <NavMenus>
@@ -103,7 +104,7 @@ const Header = () => {
                     <Underline left={menu.left} width={menu.width} />
                 </NavWrapper>
             </Nav>
-        </>
+        </HeaderWrap>
     );
 };
 
