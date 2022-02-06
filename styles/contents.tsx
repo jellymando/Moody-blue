@@ -7,8 +7,12 @@ export const Wrapper = styled.div`
     margin: 0 auto;
 `;
 
-export const Title = styled.h1`
+export const MainTitle = styled.h1`
+    font-size: ${FONTSIZE.X2LARGE};
+    margin-bottom: 70px;
+`;
+
+export const SubTitle = styled.h2`
     font-size: ${FONTSIZE.XLARGE};
-    font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 `;

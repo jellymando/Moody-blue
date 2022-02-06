@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 // Style
-import { Wrapper, Title } from 'styles/contents';
+import { Wrapper, SubTitle } from 'styles/contents';
 
 // DB
 import { collection, getDocs } from 'firebase/firestore';
@@ -28,7 +28,7 @@ const Index = ({ data, querySnapshot }) => {
         <Layout>
             <SliderContainer />
             <Wrapper>
-                <Title>상품목록</Title>
+                <SubTitle>상품목록</SubTitle>
                 {data.length > 0 && <Item items={data} />}
             </Wrapper>
         </Layout>
