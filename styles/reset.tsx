@@ -97,6 +97,7 @@ const Reset = css`
     html,
     body {
         width: 100%;
+        height: 100%;
     }
     html {
         font-size: 10px;
@@ -145,6 +146,11 @@ const Reset = css`
     span,
     i {
         display: inline-block;
+    }
+    #__next {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 `;
 
