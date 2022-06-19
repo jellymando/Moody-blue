@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const MainTitle = styled.h1`
     font-size: ${FONTSIZE.X2LARGE};
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 `;
 
 export const SubTitle = styled.h2`
