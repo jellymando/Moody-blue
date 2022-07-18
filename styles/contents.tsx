@@ -3,7 +3,7 @@ import { FONTSIZE } from 'constants/style';
 
 export const Wrapper = styled.div`
     position: relative;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
 `;
 

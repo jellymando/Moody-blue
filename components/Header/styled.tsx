@@ -85,7 +85,6 @@ export const NavWrapper = styled(Wrapper)`
 export const NavMenus = styled.ul`
     display: flex;
     justify-content: space-between;
-    padding: 0 5%;
 
     &:hover {
         ~ ${Underline} {
