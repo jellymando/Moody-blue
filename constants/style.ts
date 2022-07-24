@@ -10,6 +10,7 @@ export const FONTSIZE = {
 export const COLOR = {
     WHITE: '#fff',
     BLACK: '#333',
-    GRAY: '#d7d7d7',
+    GRAY: '#c8c8c8',
     MELLOWBLUE: '#8fdbee',
+    RED: '#f22613',
 };

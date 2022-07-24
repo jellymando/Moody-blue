@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FONTSIZE } from 'constants/style';
+import { FONTSIZE, COLOR } from 'constants/style';
 
 export const Wrapper = styled.div`
     position: relative;
@@ -15,4 +15,14 @@ export const MainTitle = styled.h1`
 export const SubTitle = styled.h2`
     font-size: ${FONTSIZE.XLARGE};
     margin-bottom: 30px;
+`;
+
+export const Info = styled.p`
+    font-size: ${FONTSIZE.SMALL};
+    color: ${COLOR.GRAY};
+`;
+
+export const Warning = styled.p`
+    font-size: ${FONTSIZE.SMALL};
+    color: ${COLOR.RED};
 `;
