@@ -1,7 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
+
+// Style
 import styled from '@emotion/styled';
 import { Button, Input } from 'jelly-design-system';
 import { Wrapper, MainTitle, Info, Warning } from 'styles/contents';
+
+// Api
+import { join } from 'api/user';
+
+// Component
 import Layout from 'components/Layout';
 
 const JoinWrapper = styled(Wrapper)`
@@ -52,24 +59,76 @@ const JoinPage = () => {
     const idRef = useRef(null);
     const passwordRef = useRef(null);
     const passwordReRef = useRef(null);
+
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordRe, setPasswordRe] = useState('');
     const [isEmpty, setIsEmpty] = useState({
         id: false,
         password: false,
         passwordRe: false,
     });
-    const [isDiscord, setIsDiscord] = useState(false);
+    const [isDiscordPassword, setIsDiscordPassword] = useState(false);
 
-    const checkEmpty = (el) => {
-        if (!el) return;
-        return el.value === '';
+    const checkTrim = (target) => {
+        const value = target.value.trim();
+        target.value = value;
     };
 
-    const handleClickSubmit = () => {
+    const handleChangeId = (e) => {
+        const value = e.target.value;
+        checkTrim(e.target);
+        setId(value);
+        if (value.length > 0) {
+            setIsEmpty((prevIsEmpty) => ({
+                ...prevIsEmpty,
+                id: false,
+            }));
+        }
+    };
+
+    const handleChangePassword = (e) => {
+        const value = e.target.value;
+        checkTrim(e.target);
+        setPassword(value);
+        if (value.length > 0) {
+            setIsEmpty((prevIsEmpty) => ({
+                ...prevIsEmpty,
+                password: false,
+            }));
+        }
+    };
+
+    const handleChangePasswordRe = (e) => {
+        const value = e.target.value;
+        checkTrim(e.target);
+        setPasswordRe(value);
+        if (password === value) {
+            setIsDiscordPassword(false);
+        }
+    };
+
+    const handleClickSubmit = async () => {
+        // 필수 입력사항 체크
+        if (id && password && passwordRe) {
+            if (password !== passwordRe) {
+                setIsDiscordPassword(true);
+            } else {
+                const result = await join({
+                    id: id,
+                    password: password,
+                    passwordRe: passwordRe,
+                    name: '',
+                    email: '',
+                    address: '',
+                });
+            }
+        }
         setIsEmpty((prevIsEmpty) => ({
             ...prevIsEmpty,
-            id: checkEmpty(idRef.current),
-            password: checkEmpty(passwordRef.current),
-            passwordRe: checkEmpty(passwordReRef.current),
+            id: !id,
+            password: !password,
+            passwordRe: !passwordRe,
         }));
     };
 
@@ -82,7 +141,7 @@ const JoinPage = () => {
                     <Ul>
                         <Li>
                             <Compulsory>
-                                <Input ref={idRef} label={'아이디*'} inline />
+                                <Input ref={idRef} label={'아이디*'} onChange={handleChangeId} inline />
                                 <Button type="button" color="mellowBlue">
                                     중복조회
                                 </Button>
@@ -90,19 +149,31 @@ const JoinPage = () => {
                             {isEmpty.id && <Warning>아이디를 입력해주세요.</Warning>}
                         </Li>
                         <Li>
-                            <Input ref={passwordRef} type="password" label="비밀번호*" inline />
+                            <Input
+                                ref={passwordRef}
+                                type="password"
+                                onChange={handleChangePassword}
+                                label="비밀번호*"
+                                inline
+                            />
                             {isEmpty.password && <Warning>비밀번호를 입력해주세요.</Warning>}
                         </Li>
                         <Li>
-                            <Input ref={passwordReRef} type="password" label="비밀번호확인*" inline />
+                            <Input
+                                ref={passwordReRef}
+                                type="password"
+                                onChange={handleChangePasswordRe}
+                                label="비밀번호확인*"
+                                inline
+                            />
                             {isEmpty.passwordRe && <Warning>비밀번호를 입력해주세요.</Warning>}
-                            {isDiscord && <Warning>비밀번호가 일치하지 않습니다.</Warning>}
+                            {isDiscordPassword && <Warning>비밀번호가 일치하지 않습니다.</Warning>}
                         </Li>
                         <Li>
-                            <Input type="password" label="성명" inline />
+                            <Input type="text" label="성명" inline />
                         </Li>
                         <Li>
-                            <Input type="password" label="휴대폰번호" inline />
+                            <Input type="text" label="휴대폰번호" inline />
                         </Li>
                         <Li>
                             <Compulsory>
