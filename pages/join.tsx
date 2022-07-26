@@ -56,13 +56,12 @@ const Compulsory = styled.div`
 `;
 
 const JoinPage = () => {
-    const idRef = useRef(null);
-    const passwordRef = useRef(null);
-    const passwordReRef = useRef(null);
-
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordRe, setPasswordRe] = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
     const [isEmpty, setIsEmpty] = useState({
         id: false,
         password: false,
@@ -108,19 +107,36 @@ const JoinPage = () => {
         }
     };
 
+    const handleChangeName = (e) => {
+        const value = e.target.value;
+        checkTrim(e.target);
+        setName(value);
+    };
+
+    const handleChangePhone = (e) => {
+        const value = e.target.value;
+        checkTrim(e.target);
+        setPhone(value);
+    };
+
+    const handleChangeAddress = (e) => {
+        const value = e.target.value;
+        checkTrim(e.target);
+        setAddress(value);
+    };
+
     const handleClickSubmit = async () => {
         // 필수 입력사항 체크
         if (id && password && passwordRe) {
             if (password !== passwordRe) {
                 setIsDiscordPassword(true);
             } else {
-                const result = await join({
-                    id: id,
-                    password: password,
-                    passwordRe: passwordRe,
-                    name: '',
-                    email: '',
-                    address: '',
+                await join({
+                    id,
+                    password,
+                    name,
+                    phone,
+                    address,
                 });
             }
         }
@@ -141,7 +157,7 @@ const JoinPage = () => {
                     <Ul>
                         <Li>
                             <Compulsory>
-                                <Input ref={idRef} label={'아이디*'} onChange={handleChangeId} inline />
+                                <Input label={'아이디*'} onChange={handleChangeId} inline />
                                 <Button type="button" color="mellowBlue">
                                     중복조회
                                 </Button>
@@ -149,35 +165,23 @@ const JoinPage = () => {
                             {isEmpty.id && <Warning>아이디를 입력해주세요.</Warning>}
                         </Li>
                         <Li>
-                            <Input
-                                ref={passwordRef}
-                                type="password"
-                                onChange={handleChangePassword}
-                                label="비밀번호*"
-                                inline
-                            />
+                            <Input type="password" label="비밀번호*" onChange={handleChangePassword} inline />
                             {isEmpty.password && <Warning>비밀번호를 입력해주세요.</Warning>}
                         </Li>
                         <Li>
-                            <Input
-                                ref={passwordReRef}
-                                type="password"
-                                onChange={handleChangePasswordRe}
-                                label="비밀번호확인*"
-                                inline
-                            />
+                            <Input type="password" label="비밀번호확인*" onChange={handleChangePasswordRe} inline />
                             {isEmpty.passwordRe && <Warning>비밀번호를 입력해주세요.</Warning>}
                             {isDiscordPassword && <Warning>비밀번호가 일치하지 않습니다.</Warning>}
                         </Li>
                         <Li>
-                            <Input type="text" label="성명" inline />
+                            <Input type="text" label="성명" onChange={handleChangeName} inline />
                         </Li>
                         <Li>
-                            <Input type="text" label="휴대폰번호" inline />
+                            <Input type="text" label="휴대폰" onChange={handleChangePhone} inline />
                         </Li>
                         <Li>
                             <Compulsory>
-                                <Input type="text" label="주소" inline />
+                                <Input type="text" label="주소" onChange={handleChangeAddress} inline />
                                 <Button type="button" color="mellowBlue">
                                     주소찾기
                                 </Button>
