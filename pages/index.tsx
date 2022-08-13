@@ -15,13 +15,17 @@ import Layout from 'components/Layout';
 import Item from 'components/ItemList';
 import SliderContainer from 'components/SliderContainer';
 
-const Index = ({ data, querySnapshot }) => {
+const Index = ({ shopData }) => {
     useEffect(() => {
-        console.log('11st data', data);
-        console.log('aws data', querySnapshot);
-        // querySnapshot.forEach((doc) => {
-        //     console.log(`${doc.id} => ${doc.data()}`);
-        // });
+        console.log('11st data', shopData);
+
+        (async () => {
+            const querySnapshot = await getDocs(collection(db, 'user'));
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, ' => ', doc.data());
+            });
+        })();
     }, []);
 
     return (
@@ -29,20 +33,18 @@ const Index = ({ data, querySnapshot }) => {
             <SliderContainer />
             <Wrapper>
                 <SubTitle>상품목록</SubTitle>
-                {data.length > 0 && <Item items={data} />}
+                {shopData.length > 0 && <Item items={shopData} />}
             </Wrapper>
         </Layout>
     );
 };
 
 export async function getStaticProps() {
-    const data = await search();
-    const querySnapshot = await JSON.stringify(getDocs(collection(db, 'user')));
+    const shopData = await search();
 
     return {
         props: {
-            data,
-            querySnapshot,
+            shopData,
         },
     };
 }
