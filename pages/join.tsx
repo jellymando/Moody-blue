@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useDaumPostcodePopup } from 'react-daum-postcode';
 
 // Style
 import styled from '@emotion/styled';
@@ -125,6 +126,30 @@ const JoinPage = () => {
         setAddress(value);
     };
 
+    const openAddressPopup = useDaumPostcodePopup();
+
+    const handleClickAddress = (e) => {
+        const handleComplete = (data) => {
+            let fullAddress = data.address;
+            let extraAddress = '';
+
+            if (data.addressType === 'R') {
+                if (data.bname !== '') {
+                    extraAddress += data.bname;
+                }
+                if (data.buildingName !== '') {
+                    extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+                }
+                fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+            }
+
+            e.target.value = fullAddress;
+            setAddress(fullAddress);
+        };
+
+        openAddressPopup({ onComplete: handleComplete });
+    };
+
     const handleClickSubmit = async () => {
         // 필수 입력사항 체크
         if (id && password && passwordRe) {
@@ -180,7 +205,7 @@ const JoinPage = () => {
                             <Input type="text" label="휴대폰" onChange={handleChangePhone} inline />
                         </Li>
                         <Li>
-                            <Compulsory>
+                            <Compulsory onClick={handleClickAddress}>
                                 <Input type="text" label="주소" onChange={handleChangeAddress} inline />
                                 <Button type="button" color="mellowBlue">
                                     주소찾기
