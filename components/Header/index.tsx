@@ -53,9 +53,7 @@ const Header = () => {
                 <TopMenuWrapper>
                     <Logo>
                         <Link href="/">
-                            <a>
-                                <Image src="/images/common/logo.png" className="logo" />
-                            </a>
+                            <Image src="/images/common/logo.png" className="logo" />
                         </Link>
                     </Logo>
                     <SideMenus>
@@ -64,16 +62,12 @@ const Header = () => {
                         </Icon>
                         <Icon>
                             <Link href="/cart">
-                                <a>
-                                    <Image src="/images/common/cart.png" className="cart_icon" />
-                                </a>
+                                <Image src="/images/common/cart.png" className="cart_icon" />
                             </Link>
                         </Icon>
                         <Icon>
                             <Link href="/login">
-                                <a>
-                                    <Image src="/images/common/login.png" className="login_icon" />
-                                </a>
+                                <Image src="/images/common/login.png" className="login_icon" />
                             </Link>
                             {/* <GoogleLogin
                                 clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
